@@ -17,7 +17,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.find_by(id: params[:id])
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user)
   end
