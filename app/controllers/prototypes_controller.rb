@@ -1,6 +1,4 @@
 class PrototypesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_prototype_id
 
   def index
     @prototypes = Prototype.all
@@ -51,9 +49,5 @@ class PrototypesController < ApplicationController
   private
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
-  end
-
-  def set_prototype_id
-    @prototype = Prototype.find_by(id: params[:id])
   end
 end
